@@ -1,0 +1,20 @@
+{
+    "name": "muscobytes/laravel-ozon-seller-webhook",
+    "description": "Creates endpoint for Ozon Seller Push Messages (webhooks) with zero effort.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Muscobytes\\OzonSeller\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Muscobytes\\OzonSeller\\WebhookServiceProvider"
+            ]
+        }
+    }
+}
