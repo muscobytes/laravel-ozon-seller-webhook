@@ -1,8 +1,10 @@
 <?php
 
-namespace Muscobytes\OzonSeller;
+namespace Muscobytes\OzonSeller\Providers;
+
 
 use Illuminate\Support\ServiceProvider;
+
 
 class WebhookServiceProvider extends ServiceProvider
 {
@@ -12,7 +14,7 @@ class WebhookServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/ozonseller.php', 'ozonseller'
+            __DIR__ . '/../../config/ozonseller.php', 'ozonseller'
         );
     }
 
@@ -23,9 +25,9 @@ class WebhookServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/ozonseller.php' => config_path('ozonseller.php'),
+            __DIR__ . '/../../config/ozonseller.php' => config_path('ozonseller.php'),
         ]);
 
-        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/api.php');
     }
 }

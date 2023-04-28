@@ -8,13 +8,21 @@
             "Muscobytes\\OzonSeller\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Muscobytes\\OzonSeller\\Tests\\": "tests/"
+        }
+    },
     "minimum-stability": "dev",
-    "require": {},
     "extra": {
         "laravel": {
             "providers": [
-                "Muscobytes\\OzonSeller\\WebhookServiceProvider"
+                "Muscobytes\\OzonSeller\\Providers\\WebhookServiceProvider"
             ]
         }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0",
+        "phpunit/phpunit": "^10.2@dev"
     }
 }
