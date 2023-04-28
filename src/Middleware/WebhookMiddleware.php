@@ -23,7 +23,7 @@ class WebhookMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (
-            !App::environment('local')
+            App::environment('production')
             && !$this->ipIsAllowed($request->ip())
         ) {
             throw new WebhookException("IP address ({$request->ip()}) is not allowed", 400);
