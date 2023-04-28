@@ -2,7 +2,6 @@
 
 namespace Muscobytes\OzonSeller\Events;
 
-use Muscobytes\OzonSellerWebhook\EventType;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -16,7 +15,7 @@ class NewPostingEvent
      * Create a new event instance.
      */
     public function __construct(
-        public EventType $type,
+        public string $type,
         public Carbon $time
     )
     {

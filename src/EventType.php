@@ -1,8 +1,8 @@
 <?php
 namespace Muscobytes\OzonSeller;
 
-use Muscobytes\OzonSellerWebhook\Events\NewPostingEvent;
-use Muscobytes\OzonSellerWebhook\Events\PingEvent;
+use Muscobytes\OzonSeller\Events\NewPostingEvent;
+use Muscobytes\OzonSeller\Events\PingEvent;
 use Illuminate\Http\Request;
 use Muscobytes\OzonSeller\Exceptions\EventTypeException;
 
