@@ -1,6 +1,6 @@
 {
     "name": "muscobytes/laravel-ozon-seller-webhook",
-    "description": "Creates endpoint for Ozon Seller Push Messages (webhooks) with zero effort.",
+    "description": "Create endpoint for Ozon Seller Push Messages (webhooks) with zero effort.",
     "type": "project",
     "license": "MIT",
     "autoload": {
