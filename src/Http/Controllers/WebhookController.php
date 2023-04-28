@@ -2,7 +2,6 @@
 
 namespace Muscobytes\OzonSeller\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -11,8 +10,7 @@ class WebhookController extends Controller
 {
     public function webhook(Request $request): JsonResponse
     {
-        $et = $request->get('event_type');
-        $response = match ($et) {
+        $response = match ($request->get('event_type')) {
             'TYPE_PING' => [
                 'version' => '',
                 'name' => config('app.name'),
