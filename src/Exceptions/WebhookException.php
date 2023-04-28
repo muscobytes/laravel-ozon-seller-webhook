@@ -15,6 +15,6 @@ class WebhookException extends Exception
                 'message' => $this->getMessage(),
                 'details' => ''
             ]
-        ]);
+        ], $this->getCode() ?: 400);
     }
 }
