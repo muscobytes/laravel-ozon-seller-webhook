@@ -44,11 +44,12 @@ class WebhookMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        $ip = $request->header('x-forwarded-for');
         if (
             App::environment('production')
-            && !$this->ipIsAllowed($request->getClientIp())
+            && !$this->ipIsAllowed($ip)
         ) {
-            throw new WebhookException("IP address ({$request->ip()}) is not allowed", 400);
+            throw new WebhookException("IP address ({$ip}) is not allowed", 400);
         }
 
         try {
