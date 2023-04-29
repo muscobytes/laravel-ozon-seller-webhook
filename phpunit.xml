@@ -11,6 +11,7 @@
   </testsuites>
   <php>
     <env name="APP_KEY" value="base64:2fl+Ktvkfl+Fuz4Qp/A75G2RTiWVA/ZoKZvp6fiiM10="/>
+    <env name="APP_VERSION" value="1.0-test"/>
   </php>
   <source>
     <include>
