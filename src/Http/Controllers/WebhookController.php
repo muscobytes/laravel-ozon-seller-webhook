@@ -10,14 +10,14 @@ class WebhookController extends Controller
 {
     public function webhook(Request $request): JsonResponse
     {
-        $response = match ($request->get('event_type')) {
+        $response = match ($request->get('message_type')) {
             'TYPE_PING' => [
-                'version' => '',
-                'name' => config('app.name'),
-                'time' => Carbon::now()->toIso8601ZuluString()
+                'version'   => env('APP_VERSION'),
+                'name'      => config('app.name'),
+                'time'      => Carbon::now()->toIso8601ZuluString()
             ],
             default => [
-                'result' => 'true'
+                'result'    => 'true'
             ],
         };
         return response()->json($response);
