@@ -4,7 +4,7 @@ namespace Muscobytes\OzonSeller\Exceptions;
 
 use Exception;
 
-class EventTypeException extends Exception
+class MessageFactoryException extends Exception
 {
 
 }

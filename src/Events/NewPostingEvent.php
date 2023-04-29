@@ -5,7 +5,7 @@ namespace Muscobytes\OzonSeller\Events;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Carbon\Carbon;
+use Muscobytes\OzonSeller\Messages\NewPostingMessage;
 
 class NewPostingEvent
 {
@@ -15,8 +15,7 @@ class NewPostingEvent
      * Create a new event instance.
      */
     public function __construct(
-        public string $type,
-        public Carbon $time
+        public NewPostingMessage $message
     )
     {
         //

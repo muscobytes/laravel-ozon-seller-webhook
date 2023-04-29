@@ -4,14 +4,36 @@ namespace Muscobytes\OzonSeller\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Muscobytes\OzonSeller\EventType;
-use Muscobytes\OzonSeller\Exceptions\EventTypeException;
+use Muscobytes\OzonSeller\Events\NewPostingEvent;
+use Muscobytes\OzonSeller\Events\PingEvent;
+use Muscobytes\OzonSeller\Exceptions\MessageFactoryException;
 use Muscobytes\OzonSeller\Exceptions\WebhookException;
+use Muscobytes\OzonSeller\MessageFactory;
+use Muscobytes\OzonSeller\Messages\NewPostingMessage;
+use Muscobytes\OzonSeller\Messages\PingMessage;
+use Spatie\LaravelData\Data;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\App;
 
+
 class WebhookMiddleware
 {
+    private array $events = [
+        PingMessage::class                  => PingEvent::class,
+        NewPostingMessage::class            => NewPostingEvent::class,
+//            PostingCanceledMessage::class       => PostingCanceledEvent::class,
+//            StateChangedMessage::class          => StateChangedEvent::class,
+//            CutoffDateChangedMessage::class     => CutoffDateChangedEvent::class,
+//            DeliveryDateChangedMessage::class   => DeliveryDateChangedEvent::class,
+//            CreateItemMessage::class            => CreateItemEvent::class,
+//            UpdateItemMessage::class            => UpdateItemEvent::class,
+//            PriceIndexChangeMessage::class      => PriceIndexChangeEvent::class,
+//            StocksChangedMessage::class         => StocksChangedEvent::class,
+//            NewMessageMessage::class            => NewMessageEvent::class,
+//            UpdateMessageMessage::class         => UpdateMessageEvent::class,
+//            ChatClosedMessage::class            => ChatClosedEvent::class,
+    ];
+
     /**
      * Handle an incoming request.
      *
@@ -30,12 +52,16 @@ class WebhookMiddleware
         }
 
         try {
+            $message = MessageFactory::create($request);
             $request->merge([
-                'event_type' => EventType::fromRequest($request)
+                'message_type' => $message->message_type
             ]);
-        } catch (EventTypeException $e) {
+        } catch (MessageFactoryException $e) {
             throw new WebhookException('Request type error', 400, $e);
         }
+
+        $this->dispatchEvent($message);
+
         return $next($request);
     }
 
@@ -71,5 +97,18 @@ class WebhookMiddleware
         $wildcard_decimal = pow(2, (32 - $netmask)) - 1;
         $netmask_decimal = ~ $wildcard_decimal;
         return (($ip_decimal & $netmask_decimal) == ($range_decimal & $netmask_decimal));
+    }
+
+
+    /**
+     * @throws WebhookException
+     */
+    private function dispatchEvent(Data $message): void
+    {
+        $class_name = get_class($message);
+        if (!key_exists($class_name, $this->events)) {
+            throw new WebhookException("Unable to find event for message ({$class_name})");
+        }
+        event(new $this->events[$class_name]($message));
     }
 }

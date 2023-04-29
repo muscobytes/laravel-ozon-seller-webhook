@@ -5,7 +5,7 @@ namespace Muscobytes\OzonSeller\Events;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Carbon\Carbon;
+use Muscobytes\OzonSeller\Messages\PingMessage;
 
 class PingEvent
 {
@@ -14,10 +14,7 @@ class PingEvent
     /**
      * Create a new event instance.
      */
-    public function __construct(
-        public string $type,
-        public Carbon $time
-    )
+    public function __construct(PingMessage $message)
     {
         //
     }
