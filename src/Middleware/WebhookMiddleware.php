@@ -46,7 +46,7 @@ class WebhookMiddleware
     {
         if (
             App::environment('production')
-            && !$this->ipIsAllowed($request->ip())
+            && !$this->ipIsAllowed($request->getClientIp())
         ) {
             throw new WebhookException("IP address ({$request->ip()}) is not allowed", 400);
         }
