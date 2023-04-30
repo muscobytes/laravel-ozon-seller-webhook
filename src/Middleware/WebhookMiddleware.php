@@ -67,10 +67,20 @@ class WebhookMiddleware
     }
 
 
+    private function getWhitelist(): array
+    {
+        return array_merge(
+            config('ozonseller.webhook.whitelist'),
+            array_map('trim',
+                explode(chr(44), env('OZON_SELLER_WEBHOOK_WHITELIST', ''))
+            )
+        );
+    }
+
+
     private function ipIsAllowed(string $ip): bool
     {
-        $whitelist = config('ozonseller.webhook.whitelist');
-        foreach ($whitelist as $range) {
+        foreach ($this->getWhitelist() as $range) {
             if ($this->ipInNetwork($ip, $range)) {
                 return true;
             }
