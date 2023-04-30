@@ -1,6 +1,6 @@
 {
     "name": "muscobytes/laravel-ozon-seller-webhook",
-    "description": "Create endpoint for Ozon Seller Push Messages (webhooks) with zero effort.",
+    "description": "Create endpoint in your Laravel application for Ozon Seller Push Messages (webhooks) with zero effort.",
     "keywords" : [
         "muscobytes",
         "laravel",
