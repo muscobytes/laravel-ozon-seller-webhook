@@ -2,7 +2,10 @@
 
 namespace Muscobytes\OzonSeller\Messages;
 
+use Carbon\Carbon;
 use Spatie\LaravelData\Attributes\Validation\In;
+use Spatie\LaravelData\Attributes\WithCast;
+use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Data;
 
 class NewPostingMessage extends Data
@@ -19,7 +22,8 @@ class NewPostingMessage extends Data
 
         public int $quantity,
 
-        public string $in_process_at,
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public Carbon $in_process_at,
 
         public int $warehouse_id,
 

@@ -36,7 +36,7 @@ class MessageFactory
     public static function create(Request $request): Data
     {
         $data = self::fromRequest($request);
-        return new self::$map[$data['message_type']](...$data);
+        return self::$map[$data['message_type']]::validateAndCreate($data);
     }
 
 

@@ -2,8 +2,12 @@
 
 namespace Muscobytes\OzonSeller\Messages;
 
+use Carbon\Carbon;
 use Spatie\LaravelData\Attributes\Validation\In;
+use Spatie\LaravelData\Attributes\WithCast;
+use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Data;
+
 
 class PingMessage extends Data
 {
@@ -11,7 +15,8 @@ class PingMessage extends Data
         #[In(['TYPE_PING'])]
         public string $message_type,
 
-        public string $time
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public Carbon $time,
     ) {
     }
 }
