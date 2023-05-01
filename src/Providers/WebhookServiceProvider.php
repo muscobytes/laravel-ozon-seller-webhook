@@ -3,6 +3,7 @@
 namespace Muscobytes\OzonSeller\Providers;
 
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -24,9 +25,13 @@ class WebhookServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->publishes([
-            __DIR__ . '/../../config/ozonseller.php' => config_path('ozonseller.php'),
-        ]);
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../../config/ozonseller.php' => config_path('ozonseller.php'),
+            ]);
+        }
+
+        Route::pattern('client_id', '[0-9]+');
 
         $this->loadRoutesFrom(__DIR__ . '/../../routes/api.php');
     }
