@@ -3,9 +3,10 @@
 namespace Muscobytes\OzonSeller\Tests;
 
 use Muscobytes\OzonSeller\Providers\WebhookServiceProvider;
-use Orchestra\Testbench\TestCase;
+use Orchestra\Testbench\TestCase as BaseTestCase;
+use Spatie\LaravelData\LaravelDataServiceProvider;
 
-class BaseTestCase extends TestCase
+class TestCase extends BaseTestCase
 {
     public function setUp(): void
     {
@@ -15,6 +16,7 @@ class BaseTestCase extends TestCase
     protected function getPackageProviders($app): array
     {
         return [
+            LaravelDataServiceProvider::class,
             WebhookServiceProvider::class,
         ];
     }
