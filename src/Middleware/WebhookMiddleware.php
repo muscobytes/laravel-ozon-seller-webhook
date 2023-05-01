@@ -13,8 +13,6 @@ use Muscobytes\OzonSeller\Messages\NewPostingMessage;
 use Muscobytes\OzonSeller\Messages\PingMessage;
 use Spatie\LaravelData\Data;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Log;
 
 
 class WebhookMiddleware
@@ -35,6 +33,7 @@ class WebhookMiddleware
 //            ChatClosedMessage::class            => ChatClosedEvent::class,
     ];
 
+
     /**
      * Handle an incoming request.
      *
@@ -51,7 +50,7 @@ class WebhookMiddleware
                 'message_type' => $message->message_type
             ]);
         } catch (MessageFactoryException $e) {
-            throw new WebhookException('Request type error', 400, $e);
+            throw new WebhookException('Message type error', 400, $e);
         }
 
         $this->dispatchEvent($message);
