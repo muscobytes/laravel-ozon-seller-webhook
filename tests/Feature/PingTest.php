@@ -12,7 +12,6 @@ class PingTest extends TestCase
     /** @test */
     function test_post_ping_message()
     {
-        $this->withoutExceptionHandling();
         Event::fake();
         $payload = [
             'message_type' => 'TYPE_PING',
