@@ -33,6 +33,7 @@
         "orchestra/testbench": "^8.5"
     },
     "require": {
-        "spatie/laravel-data": "^3"
+        "spatie/laravel-data": "^3",
+        "spatie/laravel-enum": "^3.0"
     }
 }
