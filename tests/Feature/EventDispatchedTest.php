@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Event;
 use Muscobytes\OzonSeller\Events\CreateItemEvent;
 use Muscobytes\OzonSeller\Events\CutoffDateChangedEvent;
 use Muscobytes\OzonSeller\Events\DeliveryDateChangedEvent;
+use Muscobytes\OzonSeller\Events\NewMessageEvent;
 use Muscobytes\OzonSeller\Events\NewPostingEvent;
 use Muscobytes\OzonSeller\Events\PingEvent;
 use Muscobytes\OzonSeller\Events\PostingCancelledEvent;
@@ -14,7 +15,6 @@ use Muscobytes\OzonSeller\Events\StateChangedEvent;
 use Muscobytes\OzonSeller\Events\StocksChangedEvent;
 use Muscobytes\OzonSeller\Events\UpdateItemEvent;
 use Muscobytes\OzonSeller\Tests\TestCase;
-
 
 class EventDispatchedTest extends TestCase
 {
@@ -231,7 +231,29 @@ class EventDispatchedTest extends TestCase
                         ]
                     ]
                 ]
+            ],
 
+            /**
+             * #10 NewMessageEvent
+             */
+            [
+                'client_id' => $client_id,
+                'event'     => NewMessageEvent::class,
+                'payload'   => [
+                    'message_type'          => 'TYPE_NEW_MESSAGE',
+                    'chat_id'               => 'b646d975-0c9c-4872-9f41-8b1e57181063',
+                    'chat_type'             => 'Buyer_Seller',
+                    'message_id'            => '3000000000817031942',
+                    'created_at'            => '2022-07-18T20:58:04.528Z',
+                    'user'                  => [
+                        'id'                    => '115568',
+                        'type'                  => 'Customer',
+                    ],
+                    'data'                  => [
+                        'Текст сообщения'
+                    ],
+                    'seller_id'             => '7'
+                ]
             ],
         ];
     }

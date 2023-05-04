@@ -7,6 +7,7 @@ use Muscobytes\OzonSeller\Exceptions\MessageFactoryException;
 use Muscobytes\OzonSeller\Messages\CreateItemMessage;
 use Muscobytes\OzonSeller\Messages\CutoffDateChangedMessage;
 use Muscobytes\OzonSeller\Messages\DeliveryDateChangedMessage;
+use Muscobytes\OzonSeller\Messages\NewMessageMessage;
 use Muscobytes\OzonSeller\Messages\NewPostingMessage;
 use Muscobytes\OzonSeller\Messages\PingMessage;
 use Muscobytes\OzonSeller\Messages\PostingCancelledMessage;
@@ -32,7 +33,7 @@ class MessageFactory
         'TYPE_UPDATE_ITEM'              => UpdateItemMessage::class,
         'TYPE_PRICE_INDEX_CHANGED'      => PriceIndexChangedMessage::class,
         'TYPE_STOCKS_CHANGED'           => StocksChangedMessage::class,
-//        'TYPE_NEW_MESSAGE'              => NewMessageMessage::class,
+        'TYPE_NEW_MESSAGE'              => NewMessageMessage::class,
 //        'TYPE_UPDATE_MESSAGE'           => UpdateMessageMessage::class,
 //        'TYPE_CHAT_CLOSED'              => ChatClosedMessage::class
     ];
