@@ -10,6 +10,7 @@ use Muscobytes\OzonSeller\Events\NewPostingEvent;
 use Muscobytes\OzonSeller\Events\PingEvent;
 use Muscobytes\OzonSeller\Events\PostingCancelledEvent;
 use Muscobytes\OzonSeller\Events\StateChangedEvent;
+use Muscobytes\OzonSeller\Events\UpdateItemEvent;
 use Muscobytes\OzonSeller\Tests\TestCase;
 
 
@@ -47,7 +48,7 @@ class EventDispatchedTest extends TestCase
 
         return [
             /**
-             * PingEvent
+             * #0 PingEvent
              */
             [
                 'client_id' => $client_id,
@@ -59,7 +60,7 @@ class EventDispatchedTest extends TestCase
             ],
 
             /**
-             * NewPostingEvent
+             * #1 NewPostingEvent
              */
             [
                 'client_id' => $client_id,
@@ -80,7 +81,7 @@ class EventDispatchedTest extends TestCase
             ],
 
             /**
-             * PostingCancelledEvent
+             * #2 PostingCancelledEvent
              */
             [
                 'client_id' => $client_id,
@@ -107,7 +108,7 @@ class EventDispatchedTest extends TestCase
             ],
 
             /**
-             * StateChangedEvent
+             * #3 StateChangedEvent
              */
             [
                 'client_id' => $client_id,
@@ -123,7 +124,7 @@ class EventDispatchedTest extends TestCase
             ],
 
             /**
-             * CutoffDateChangedEvent
+             * #4 CutoffDateChangedEvent
              */
             [
                 'client_id' => $client_id,
@@ -139,7 +140,7 @@ class EventDispatchedTest extends TestCase
             ],
 
             /**
-             * DeliveryDateChangedEvent
+             * #5 DeliveryDateChangedEvent
              */
             [
                 'client_id' => $client_id,
@@ -157,7 +158,7 @@ class EventDispatchedTest extends TestCase
             ],
 
             /**
-             * CreateItemEvent
+             * #6 CreateItemEvent
              */
             [
                 'client_id' => $client_id,
@@ -171,7 +172,23 @@ class EventDispatchedTest extends TestCase
                     'changed_at'            => '2021-09-01T14:15:22Z'
                 ]
             ],
+
+            /**
+             * #7 UpdateItemEvent
+             */
+            [
+                'client_id' => $client_id,
+                'event'     => UpdateItemEvent::class,
+                'payload'   => [
+                    'message_type'          => 'TYPE_UPDATE_ITEM',
+                    'seller_id'             => 0,
+                    'offer_id'              => 'string',
+                    'product_id'            => 0,
+                    'is_error'              => false,
+                    'changed_at'            => '2021-09-01T14:15:22Z'
+                ]
+
+            ]
         ];
     }
-
 }
