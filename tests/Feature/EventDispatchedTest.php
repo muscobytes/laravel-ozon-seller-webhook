@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Event;
 use Muscobytes\OzonSeller\Events\CreateItemEvent;
 use Muscobytes\OzonSeller\Events\CutoffDateChangedEvent;
 use Muscobytes\OzonSeller\Events\DeliveryDateChangedEvent;
+use Muscobytes\OzonSeller\Events\MessageReadEvent;
 use Muscobytes\OzonSeller\Events\NewMessageEvent;
 use Muscobytes\OzonSeller\Events\NewPostingEvent;
 use Muscobytes\OzonSeller\Events\PingEvent;
@@ -254,6 +255,28 @@ class EventDispatchedTest extends TestCase
                     ],
                     'seller_id'             => '7'
                 ]
+            ],
+
+            /**
+             * #12 MessageReadEvent
+             */
+            [
+                'client_id' => $client_id,
+                'event'     => MessageReadEvent::class,
+                'payload'   => [
+                    'message_type'          => 'TYPE_MESSAGE_READ',
+                    'chat_id'               => 'b646d975-0c9c-4872-9f41-8b1e57181063',
+                    'chat_type'             => 'Buyer_Seller',
+                    'message_id'            => '3000000000817031942',
+                    'created_at'            => '2022-07-18T20:58:04.528Z',
+                    'user'                  => [
+                        'id'                    => '115568',
+                        'type'                  => 'Customer',
+                    ],
+                    'last_read_message_id'  => '3000000000817031942',
+                    'seller_id'             => '7'
+                ]
+
             ],
         ];
     }

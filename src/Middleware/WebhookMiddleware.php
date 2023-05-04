@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Muscobytes\OzonSeller\Events\CreateItemEvent;
 use Muscobytes\OzonSeller\Events\CutoffDateChangedEvent;
 use Muscobytes\OzonSeller\Events\DeliveryDateChangedEvent;
+use Muscobytes\OzonSeller\Events\MessageReadEvent;
 use Muscobytes\OzonSeller\Events\NewMessageEvent;
 use Muscobytes\OzonSeller\Events\NewPostingEvent;
 use Muscobytes\OzonSeller\Events\PingEvent;
@@ -21,6 +22,7 @@ use Muscobytes\OzonSeller\MessageFactory;
 use Muscobytes\OzonSeller\Messages\CreateItemMessage;
 use Muscobytes\OzonSeller\Messages\CutoffDateChangedMessage;
 use Muscobytes\OzonSeller\Messages\DeliveryDateChangedMessage;
+use Muscobytes\OzonSeller\Messages\MessageReadMessage;
 use Muscobytes\OzonSeller\Messages\NewMessageMessage;
 use Muscobytes\OzonSeller\Messages\NewPostingMessage;
 use Muscobytes\OzonSeller\Messages\PingMessage;
@@ -47,8 +49,9 @@ class WebhookMiddleware
         PriceIndexChangedMessage::class     => PriceIndexChangedEvent::class,
         StocksChangedMessage::class         => StocksChangedEvent::class,
         NewMessageMessage::class            => NewMessageEvent::class,
-//            UpdateMessageMessage::class         => UpdateMessageEvent::class,
-//            ChatClosedMessage::class            => ChatClosedEvent::class,
+//        UpdateMessageMessage::class         => UpdateMessageEvent::class,
+        MessageReadMessage::class           => MessageReadEvent::class,
+//        ChatClosedMessage::class            => ChatClosedEvent::class,
     ];
 
 

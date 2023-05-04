@@ -4,7 +4,6 @@ namespace Muscobytes\OzonSeller\Messages\Properties;
 
 use Spatie\Enum\Laravel\Enum;
 
-
 /**
  * @method static self posting_acceptance_in_progress()
  * @method static self posting_created()
