@@ -3,6 +3,7 @@
 namespace Muscobytes\OzonSeller\Tests\Feature;
 
 use Illuminate\Support\Facades\Event;
+use Muscobytes\OzonSeller\Events\ChatClosedEvent;
 use Muscobytes\OzonSeller\Events\CreateItemEvent;
 use Muscobytes\OzonSeller\Events\CutoffDateChangedEvent;
 use Muscobytes\OzonSeller\Events\DeliveryDateChangedEvent;
@@ -302,6 +303,24 @@ class EventDispatchedTest extends TestCase
                     'seller_id'             => '7'
                 ]
             ],
+
+            /**
+             * #13 ChatClosedEvent
+             */
+            [
+                'client_id' => $client_id,
+                'event'     => ChatClosedEvent::class,
+                'payload'   => [
+                    'message_type'          => 'TYPE_CHAT_CLOSED',
+                    'chat_id'               => 'b646d975-0c9c-4872-9f41-8b1e57181063',
+                    'chat_type'             => 'Buyer_Seller',
+                    'user'                  => [
+                        'id'                    => '115568',
+                        'type'                  => 'Customer',
+                    ],
+                    'seller_id'             => '7'
+                ]
+            ]
         ];
     }
 }

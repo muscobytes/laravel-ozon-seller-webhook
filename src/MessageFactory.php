@@ -4,6 +4,7 @@ namespace Muscobytes\OzonSeller;
 
 use Illuminate\Http\Request;
 use Muscobytes\OzonSeller\Exceptions\MessageFactoryException;
+use Muscobytes\OzonSeller\Messages\ChatClosedMessage;
 use Muscobytes\OzonSeller\Messages\CreateItemMessage;
 use Muscobytes\OzonSeller\Messages\CutoffDateChangedMessage;
 use Muscobytes\OzonSeller\Messages\DeliveryDateChangedMessage;
@@ -49,7 +50,7 @@ class MessageFactory
         'TYPE_NEW_MESSAGE'              => NewMessageMessage::class,
         'TYPE_UPDATE_MESSAGE'           => UpdateMessageMessage::class,
         'TYPE_MESSAGE_READ'             => MessageReadMessage::class,
-//        'TYPE_CHAT_CLOSED'              => ChatClosedMessage::class
+        'TYPE_CHAT_CLOSED'              => ChatClosedMessage::class
     ];
 
 

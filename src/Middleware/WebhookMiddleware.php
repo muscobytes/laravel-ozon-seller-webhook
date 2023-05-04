@@ -4,6 +4,7 @@ namespace Muscobytes\OzonSeller\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Muscobytes\OzonSeller\Events\ChatClosedEvent;
 use Muscobytes\OzonSeller\Events\CreateItemEvent;
 use Muscobytes\OzonSeller\Events\CutoffDateChangedEvent;
 use Muscobytes\OzonSeller\Events\DeliveryDateChangedEvent;
@@ -20,6 +21,7 @@ use Muscobytes\OzonSeller\Events\UpdateMessageEvent;
 use Muscobytes\OzonSeller\Exceptions\MessageFactoryException;
 use Muscobytes\OzonSeller\Exceptions\WebhookException;
 use Muscobytes\OzonSeller\MessageFactory;
+use Muscobytes\OzonSeller\Messages\ChatClosedMessage;
 use Muscobytes\OzonSeller\Messages\CreateItemMessage;
 use Muscobytes\OzonSeller\Messages\CutoffDateChangedMessage;
 use Muscobytes\OzonSeller\Messages\DeliveryDateChangedMessage;
@@ -53,7 +55,7 @@ class WebhookMiddleware
         NewMessageMessage::class            => NewMessageEvent::class,
         UpdateMessageMessage::class         => UpdateMessageEvent::class,
         MessageReadMessage::class           => MessageReadEvent::class,
-//        ChatClosedMessage::class            => ChatClosedEvent::class,
+        ChatClosedMessage::class            => ChatClosedEvent::class,
     ];
 
 
