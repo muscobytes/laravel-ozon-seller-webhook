@@ -16,6 +16,7 @@ use Muscobytes\OzonSeller\Events\PriceIndexChangedEvent;
 use Muscobytes\OzonSeller\Events\StateChangedEvent;
 use Muscobytes\OzonSeller\Events\StocksChangedEvent;
 use Muscobytes\OzonSeller\Events\UpdateItemEvent;
+use Muscobytes\OzonSeller\Events\UpdateMessageEvent;
 use Muscobytes\OzonSeller\Exceptions\MessageFactoryException;
 use Muscobytes\OzonSeller\Exceptions\WebhookException;
 use Muscobytes\OzonSeller\MessageFactory;
@@ -31,6 +32,7 @@ use Muscobytes\OzonSeller\Messages\PriceIndexChangedMessage;
 use Muscobytes\OzonSeller\Messages\StateChangedMessage;
 use Muscobytes\OzonSeller\Messages\StocksChangedMessage;
 use Muscobytes\OzonSeller\Messages\UpdateItemMessage;
+use Muscobytes\OzonSeller\Messages\UpdateMessageMessage;
 use Spatie\LaravelData\Data;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -49,7 +51,7 @@ class WebhookMiddleware
         PriceIndexChangedMessage::class     => PriceIndexChangedEvent::class,
         StocksChangedMessage::class         => StocksChangedEvent::class,
         NewMessageMessage::class            => NewMessageEvent::class,
-//        UpdateMessageMessage::class         => UpdateMessageEvent::class,
+        UpdateMessageMessage::class         => UpdateMessageEvent::class,
         MessageReadMessage::class           => MessageReadEvent::class,
 //        ChatClosedMessage::class            => ChatClosedEvent::class,
     ];

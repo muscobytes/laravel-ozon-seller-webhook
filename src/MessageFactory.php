@@ -16,6 +16,7 @@ use Muscobytes\OzonSeller\Messages\PriceIndexChangedMessage;
 use Muscobytes\OzonSeller\Messages\StateChangedMessage;
 use Muscobytes\OzonSeller\Messages\StocksChangedMessage;
 use Muscobytes\OzonSeller\Messages\UpdateItemMessage;
+use Muscobytes\OzonSeller\Messages\UpdateMessageMessage;
 use Spatie\LaravelData\Data;
 
 class MessageFactory
@@ -27,7 +28,6 @@ class MessageFactory
     {
         $data = self::fromRequest($request);
         $class_name = self::$map[$data['message_type']];
-        // @TODO check instance of $class_name == `Data`
         return $class_name::validateAndCreate($data);
     }
 
@@ -47,7 +47,7 @@ class MessageFactory
         'TYPE_PRICE_INDEX_CHANGED'      => PriceIndexChangedMessage::class,
         'TYPE_STOCKS_CHANGED'           => StocksChangedMessage::class,
         'TYPE_NEW_MESSAGE'              => NewMessageMessage::class,
-//        'TYPE_UPDATE_MESSAGE'           => UpdateMessageMessage::class,
+        'TYPE_UPDATE_MESSAGE'           => UpdateMessageMessage::class,
         'TYPE_MESSAGE_READ'             => MessageReadMessage::class,
 //        'TYPE_CHAT_CLOSED'              => ChatClosedMessage::class
     ];

@@ -15,6 +15,7 @@ use Muscobytes\OzonSeller\Events\PriceIndexChangedEvent;
 use Muscobytes\OzonSeller\Events\StateChangedEvent;
 use Muscobytes\OzonSeller\Events\StocksChangedEvent;
 use Muscobytes\OzonSeller\Events\UpdateItemEvent;
+use Muscobytes\OzonSeller\Events\UpdateMessageEvent;
 use Muscobytes\OzonSeller\Tests\TestCase;
 
 class EventDispatchedTest extends TestCase
@@ -258,6 +259,30 @@ class EventDispatchedTest extends TestCase
             ],
 
             /**
+             * #11 UpdateMessageEvent
+             */
+            [
+                'client_id' => $client_id,
+                'event'     => UpdateMessageEvent::class,
+                'payload'   => [
+                    'message_type'          => 'TYPE_UPDATE_MESSAGE',
+                    'chat_id'               => 'b646d975-0c9c-4872-9f41-8b1e57181063',
+                    'chat_type'             => 'Buyer_Seller',
+                    'message_id'            => '3000000000817031942',
+                    'created_at'            => '2022-07-18T20:58:04.528Z',
+                    'updated_at'            => '2022-07-18T20:59:04.528Z',
+                    'user'                  => [
+                        'id'                    => '115568',
+                        'type'                  => 'Customer',
+                    ],
+                    'data'                  => [
+                        'Текст сообщения'
+                    ],
+                    'seller_id'             => '7'
+                ]
+            ],
+
+            /**
              * #12 MessageReadEvent
              */
             [
@@ -276,7 +301,6 @@ class EventDispatchedTest extends TestCase
                     'last_read_message_id'  => '3000000000817031942',
                     'seller_id'             => '7'
                 ]
-
             ],
         ];
     }
