@@ -4,6 +4,9 @@ namespace Muscobytes\OzonSeller\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Muscobytes\OzonSeller\Events\CreateItemEvent;
+use Muscobytes\OzonSeller\Events\CutoffDateChangedEvent;
+use Muscobytes\OzonSeller\Events\DeliveryDateChangedEvent;
 use Muscobytes\OzonSeller\Events\NewPostingEvent;
 use Muscobytes\OzonSeller\Events\PingEvent;
 use Muscobytes\OzonSeller\Events\PostingCancelledEvent;
@@ -11,12 +14,15 @@ use Muscobytes\OzonSeller\Events\StateChangedEvent;
 use Muscobytes\OzonSeller\Exceptions\MessageFactoryException;
 use Muscobytes\OzonSeller\Exceptions\WebhookException;
 use Muscobytes\OzonSeller\MessageFactory;
+use Muscobytes\OzonSeller\Messages\CreateItemMessage;
+use Muscobytes\OzonSeller\Messages\CutoffDateChangedMessage;
+use Muscobytes\OzonSeller\Messages\DeliveryDateChangedMessage;
 use Muscobytes\OzonSeller\Messages\NewPostingMessage;
 use Muscobytes\OzonSeller\Messages\PingMessage;
+use Muscobytes\OzonSeller\Messages\PostingCancelledMessage;
 use Muscobytes\OzonSeller\Messages\StateChangedMessage;
 use Spatie\LaravelData\Data;
 use Symfony\Component\HttpFoundation\Response;
-use Muscobytes\OzonSeller\Messages\PostingCancelledMessage;
 
 
 class WebhookMiddleware
@@ -26,9 +32,9 @@ class WebhookMiddleware
         NewPostingMessage::class            => NewPostingEvent::class,
         PostingCancelledMessage::class      => PostingCancelledEvent::class,
         StateChangedMessage::class          => StateChangedEvent::class,
-//            CutoffDateChangedMessage::class     => CutoffDateChangedEvent::class,
-//            DeliveryDateChangedMessage::class   => DeliveryDateChangedEvent::class,
-//            CreateItemMessage::class            => CreateItemEvent::class,
+        CutoffDateChangedMessage::class     => CutoffDateChangedEvent::class,
+        DeliveryDateChangedMessage::class   => DeliveryDateChangedEvent::class,
+        CreateItemMessage::class            => CreateItemEvent::class,
 //            UpdateItemMessage::class            => UpdateItemEvent::class,
 //            PriceIndexChangeMessage::class      => PriceIndexChangeEvent::class,
 //            StocksChangedMessage::class         => StocksChangedEvent::class,

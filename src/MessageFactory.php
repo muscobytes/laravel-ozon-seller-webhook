@@ -4,6 +4,9 @@ namespace Muscobytes\OzonSeller;
 
 use Illuminate\Http\Request;
 use Muscobytes\OzonSeller\Exceptions\MessageFactoryException;
+use Muscobytes\OzonSeller\Messages\CreateItemMessage;
+use Muscobytes\OzonSeller\Messages\CutoffDateChangedMessage;
+use Muscobytes\OzonSeller\Messages\DeliveryDateChangedMessage;
 use Muscobytes\OzonSeller\Messages\NewPostingMessage;
 use Muscobytes\OzonSeller\Messages\PingMessage;
 use Muscobytes\OzonSeller\Messages\PostingCancelledMessage;
@@ -20,9 +23,9 @@ class MessageFactory
         'TYPE_NEW_POSTING'              => NewPostingMessage::class,
         'TYPE_POSTING_CANCELLED'        => PostingCancelledMessage::class,
         'TYPE_STATE_CHANGED'            => StateChangedMessage::class,
-//        'TYPE_CUTOFF_DATE_CHANGED'      => CutoffDateChangedMessage::class,
-//        'TYPE_DELIVERY_DATE_CHANGED'    => DeliveryDateChangedMessage::class,
-//        'TYPE_CREATE_ITEM'              => CreateItemMessage::class,
+        'TYPE_CUTOFF_DATE_CHANGED'      => CutoffDateChangedMessage::class,
+        'TYPE_DELIVERY_DATE_CHANGED'    => DeliveryDateChangedMessage::class,
+        'TYPE_CREATE_ITEM'              => CreateItemMessage::class,
 //        'TYPE_UPDATE_ITEM'              => UpdateItemMessage::class,
 //        'TYPE_PRICE_INDEX_CHANGED'      => PriceIndexChangeMessage::class,
 //        'TYPE_STOCKS_CHANGED'           => StocksChangedMessage::class,
@@ -38,7 +41,9 @@ class MessageFactory
     public static function create(Request $request): Data
     {
         $data = self::fromRequest($request);
-        return self::$map[$data['message_type']]::validateAndCreate($data);
+        $class_name = self::$map[$data['message_type']];
+        // @TODO check instance of $class_name == `Data`
+        return $class_name::validateAndCreate($data);
     }
 
 
