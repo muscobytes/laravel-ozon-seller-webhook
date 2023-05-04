@@ -11,11 +11,13 @@ class PostingCancelledEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-
     /**
      * Create a new event instance.
      */
-    public function __construct(PostingCancelledMessage $message)
+    public function __construct(
+        PostingCancelledMessage $message
+    )
     {
+        //
     }
 }

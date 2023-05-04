@@ -11,11 +11,13 @@ class StateChangedEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-
     /**
      * Create a new event instance.
      */
-    public function __construct(StateChangedMessage $message)
+    public function __construct(
+        StateChangedMessage $message
+    )
     {
+        //
     }
 }
