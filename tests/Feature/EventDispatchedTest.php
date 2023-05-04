@@ -9,6 +9,7 @@ use Muscobytes\OzonSeller\Events\DeliveryDateChangedEvent;
 use Muscobytes\OzonSeller\Events\NewPostingEvent;
 use Muscobytes\OzonSeller\Events\PingEvent;
 use Muscobytes\OzonSeller\Events\PostingCancelledEvent;
+use Muscobytes\OzonSeller\Events\PriceIndexChangedEvent;
 use Muscobytes\OzonSeller\Events\StateChangedEvent;
 use Muscobytes\OzonSeller\Events\UpdateItemEvent;
 use Muscobytes\OzonSeller\Tests\TestCase;
@@ -187,8 +188,23 @@ class EventDispatchedTest extends TestCase
                     'is_error'              => false,
                     'changed_at'            => '2021-09-01T14:15:22Z'
                 ]
+            ],
 
-            ]
+            /**
+             * #8 PriceIndexChangedEvent
+             */
+            [
+                'client_id' => $client_id,
+                'event'     => PriceIndexChangedEvent::class,
+                'payload'   => [
+                    'message_type'          => 'TYPE_PRICE_INDEX_CHANGED',
+                    'seller_id'             => 0,
+                    'updated_at'            => '2022-06-21T05:52:46.648533678Z',
+                    'sku'                   => 0,
+                    'product_id'            => 0,
+                    'price_index'           => 0
+                ]
+            ],
         ];
     }
 }
