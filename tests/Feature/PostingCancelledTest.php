@@ -4,12 +4,10 @@ namespace Muscobytes\OzonSeller\Tests\Feature;
 
 use Illuminate\Support\Facades\Event;
 use Muscobytes\OzonSeller\Events\PostingCancelledEvent;
-use Muscobytes\OzonSeller\Messages\PostingCancelledMessage;
 use Muscobytes\OzonSeller\Tests\TestCase;
 
 class PostingCancelledTest extends TestCase
 {
-
     public function test_posting_cancelled()
     {
         Event::fake();

@@ -17,8 +17,10 @@ class PingTest extends TestCase
             'message_type' => 'TYPE_PING',
             'time' => '2019-08-24T14:15:22Z'
         ];
-        $client_id = '314159265359';
-        $response = $this->postJson(route('ozonseller.webhook', ['client_id' => $client_id]), $payload);
+        $route = route('ozonseller.webhook', [
+            'client_id' => '314159265359'
+        ]);
+        $response = $this->postJson($route, $payload);
         $response->assertStatus(200);
         Event::assertDispatched(PingEvent::class);
     }
