@@ -8,7 +8,17 @@ use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Data;
 
-
+/**
+ * Запрос для проверки соединения
+ * https://docs.ozon.ru/api/seller/#section/Zapros-dlya-proverki-soedineniya
+ *
+ * ```json
+ *  {
+ *      "message_type": "string",
+ *      "time": "2019-08-24T14:15:22Z"
+ *  }
+ * ```
+ */
 class PingMessage extends Data
 {
     public function __construct(

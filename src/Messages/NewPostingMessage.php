@@ -11,6 +11,26 @@ use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\DataCollection;
 
+/**
+ * Новое отправление
+ * https://docs.ozon.ru/api/seller/#section/Novoe-otpravlenie
+ *
+ * ```json
+ *  {
+ *      "message_type": "TYPE_NEW_POSTING",
+ *      "posting_number": "24219509-0020-1",
+ *      "products": [
+ *          {
+ *              "sku": 147451959,
+ *              "quantity": 2
+ *          }
+ *      ],
+ *      "in_process_at": "2021-01-26T06:56:36.294Z",
+ *      "warehouse_id": 18850503335000,
+ *      "seller_id": 15
+ *  }
+ * ```
+ */
 class NewPostingMessage extends Data
 {
     public function __construct(
