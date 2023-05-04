@@ -12,6 +12,7 @@ use Muscobytes\OzonSeller\Messages\PingMessage;
 use Muscobytes\OzonSeller\Messages\PostingCancelledMessage;
 use Muscobytes\OzonSeller\Messages\PriceIndexChangedMessage;
 use Muscobytes\OzonSeller\Messages\StateChangedMessage;
+use Muscobytes\OzonSeller\Messages\StocksChangedMessage;
 use Muscobytes\OzonSeller\Messages\UpdateItemMessage;
 use Spatie\LaravelData\Data;
 
@@ -30,7 +31,7 @@ class MessageFactory
         'TYPE_CREATE_ITEM'              => CreateItemMessage::class,
         'TYPE_UPDATE_ITEM'              => UpdateItemMessage::class,
         'TYPE_PRICE_INDEX_CHANGED'      => PriceIndexChangedMessage::class,
-//        'TYPE_STOCKS_CHANGED'           => StocksChangedMessage::class,
+        'TYPE_STOCKS_CHANGED'           => StocksChangedMessage::class,
 //        'TYPE_NEW_MESSAGE'              => NewMessageMessage::class,
 //        'TYPE_UPDATE_MESSAGE'           => UpdateMessageMessage::class,
 //        'TYPE_CHAT_CLOSED'              => ChatClosedMessage::class

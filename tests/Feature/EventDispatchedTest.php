@@ -11,6 +11,7 @@ use Muscobytes\OzonSeller\Events\PingEvent;
 use Muscobytes\OzonSeller\Events\PostingCancelledEvent;
 use Muscobytes\OzonSeller\Events\PriceIndexChangedEvent;
 use Muscobytes\OzonSeller\Events\StateChangedEvent;
+use Muscobytes\OzonSeller\Events\StocksChangedEvent;
 use Muscobytes\OzonSeller\Events\UpdateItemEvent;
 use Muscobytes\OzonSeller\Tests\TestCase;
 
@@ -204,6 +205,33 @@ class EventDispatchedTest extends TestCase
                     'product_id'            => 0,
                     'price_index'           => 0
                 ]
+            ],
+
+            /**
+             * #9 StocksChangedEvent
+             */
+            [
+                'client_id' => $client_id,
+                'event'     => StocksChangedEvent::class,
+                'payload'   => [
+                    'message_type'          => 'TYPE_STOCKS_CHANGED',
+                    'seller_id'             => 0,
+                    'items'                 => [
+                        [
+                            'product_id'        => 0,
+                            'sku'               => 0,
+                            'updated_at'        => '2021-09-01T14:15:22Z',
+                            'stocks'            => [
+                                [
+                                    'warehouse_id'  => 0,
+                                    'present'       => 0,
+                                    'reserved'      => 0
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+
             ],
         ];
     }
