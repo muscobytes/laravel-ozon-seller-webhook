@@ -7,6 +7,7 @@ use Muscobytes\OzonSeller\Exceptions\MessageFactoryException;
 use Muscobytes\OzonSeller\Messages\NewPostingMessage;
 use Muscobytes\OzonSeller\Messages\PingMessage;
 use Muscobytes\OzonSeller\Messages\PostingCancelledMessage;
+use Muscobytes\OzonSeller\Messages\StateChangedMessage;
 use Spatie\LaravelData\Data;
 
 class MessageFactory
@@ -18,7 +19,7 @@ class MessageFactory
         'TYPE_PING'                     => PingMessage::class,
         'TYPE_NEW_POSTING'              => NewPostingMessage::class,
         'TYPE_POSTING_CANCELLED'        => PostingCancelledMessage::class,
-//        'TYPE_STATE_CHANGED'            => StateChangedMessage::class,
+        'TYPE_STATE_CHANGED'            => StateChangedMessage::class,
 //        'TYPE_CUTOFF_DATE_CHANGED'      => CutoffDateChangedMessage::class,
 //        'TYPE_DELIVERY_DATE_CHANGED'    => DeliveryDateChangedMessage::class,
 //        'TYPE_CREATE_ITEM'              => CreateItemMessage::class,

@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use Muscobytes\OzonSeller\Events\NewPostingEvent;
 use Muscobytes\OzonSeller\Events\PingEvent;
 use Muscobytes\OzonSeller\Events\PostingCancelledEvent;
+use Muscobytes\OzonSeller\Events\StateChangedEvent;
 use Muscobytes\OzonSeller\Exceptions\MessageFactoryException;
 use Muscobytes\OzonSeller\Exceptions\WebhookException;
 use Muscobytes\OzonSeller\MessageFactory;
 use Muscobytes\OzonSeller\Messages\NewPostingMessage;
 use Muscobytes\OzonSeller\Messages\PingMessage;
+use Muscobytes\OzonSeller\Messages\StateChangedMessage;
 use Spatie\LaravelData\Data;
 use Symfony\Component\HttpFoundation\Response;
 use Muscobytes\OzonSeller\Messages\PostingCancelledMessage;
@@ -23,7 +25,7 @@ class WebhookMiddleware
         PingMessage::class                  => PingEvent::class,
         NewPostingMessage::class            => NewPostingEvent::class,
         PostingCancelledMessage::class      => PostingCancelledEvent::class,
-//            StateChangedMessage::class          => StateChangedEvent::class,
+        StateChangedMessage::class          => StateChangedEvent::class,
 //            CutoffDateChangedMessage::class     => CutoffDateChangedEvent::class,
 //            DeliveryDateChangedMessage::class   => DeliveryDateChangedEvent::class,
 //            CreateItemMessage::class            => CreateItemEvent::class,
