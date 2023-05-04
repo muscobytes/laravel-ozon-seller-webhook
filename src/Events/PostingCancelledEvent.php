@@ -18,5 +18,4 @@ class PostingCancelledEvent
     public function __construct(PostingCancelledMessage $message)
     {
     }
-
 }
