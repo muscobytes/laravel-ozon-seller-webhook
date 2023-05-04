@@ -1,0 +1,23 @@
+<?php
+
+namespace Muscobytes\OzonSeller\Events;
+
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+use Muscobytes\OzonSeller\Messages\MessageReadMessage;
+
+class MessageReadEvent
+{
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    /**
+     * Create a new event instance.
+     */
+    public function __construct(
+        MessageReadMessage $message
+    )
+    {
+        //
+    }
+}
