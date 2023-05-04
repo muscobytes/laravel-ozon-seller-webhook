@@ -5,19 +5,18 @@ namespace Muscobytes\OzonSeller\Events;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Muscobytes\OzonSeller\Messages\PingMessage;
+use Muscobytes\OzonSeller\Messages\DeliveryDateChangedMessage;
 
-class PingEvent
+class DeliveryDateChangedEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
-    public function __construct(
-        PingMessage $message
-    )
+    public function __construct(DeliveryDateChangedMessage $message)
     {
         //
     }
+
 }

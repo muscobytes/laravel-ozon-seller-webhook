@@ -21,7 +21,7 @@
             "Muscobytes\\OzonSeller\\Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "extra": {
         "laravel": {
             "providers": [
@@ -30,10 +30,10 @@
         }
     },
     "require-dev": {
-        "orchestra/testbench": "^8.0",
-        "phpunit/phpunit": "^10.2@dev"
+        "orchestra/testbench": "^8.5"
     },
     "require": {
-        "spatie/laravel-data": "dev-main"
+        "spatie/laravel-data": "^3",
+        "spatie/laravel-enum": "^3.0"
     }
 }

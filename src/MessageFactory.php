@@ -4,40 +4,54 @@ namespace Muscobytes\OzonSeller;
 
 use Illuminate\Http\Request;
 use Muscobytes\OzonSeller\Exceptions\MessageFactoryException;
+use Muscobytes\OzonSeller\Messages\ChatClosedMessage;
+use Muscobytes\OzonSeller\Messages\CreateItemMessage;
+use Muscobytes\OzonSeller\Messages\CutoffDateChangedMessage;
+use Muscobytes\OzonSeller\Messages\DeliveryDateChangedMessage;
+use Muscobytes\OzonSeller\Messages\MessageReadMessage;
+use Muscobytes\OzonSeller\Messages\NewMessageMessage;
 use Muscobytes\OzonSeller\Messages\NewPostingMessage;
 use Muscobytes\OzonSeller\Messages\PingMessage;
+use Muscobytes\OzonSeller\Messages\PostingCancelledMessage;
+use Muscobytes\OzonSeller\Messages\PriceIndexChangedMessage;
+use Muscobytes\OzonSeller\Messages\StateChangedMessage;
+use Muscobytes\OzonSeller\Messages\StocksChangedMessage;
+use Muscobytes\OzonSeller\Messages\UpdateItemMessage;
+use Muscobytes\OzonSeller\Messages\UpdateMessageMessage;
 use Spatie\LaravelData\Data;
 
 class MessageFactory
 {
-    /**
-     * https://docs.ozon.ru/api/seller/#tag/push_types
-     */
-    protected static array $map = [
-        'TYPE_PING'                     => PingMessage::class,
-        'TYPE_NEW_POSTING'              => NewPostingMessage::class,
-//        'TYPE_POSTING_CANCELLED'        => PostingCanceledMessage::class,
-//        'TYPE_STATE_CHANGED'            => StateChangedMessage::class,
-//        'TYPE_CUTOFF_DATE_CHANGED'      => CutoffDateChangedMessage::class,
-//        'TYPE_DELIVERY_DATE_CHANGED'    => DeliveryDateChangedMessage::class,
-//        'TYPE_CREATE_ITEM'              => CreateItemMessage::class,
-//        'TYPE_UPDATE_ITEM'              => UpdateItemMessage::class,
-//        'TYPE_PRICE_INDEX_CHANGED'      => PriceIndexChangeMessage::class,
-//        'TYPE_STOCKS_CHANGED'           => StocksChangedMessage::class,
-//        'TYPE_NEW_MESSAGE'              => NewMessageMessage::class,
-//        'TYPE_UPDATE_MESSAGE'           => UpdateMessageMessage::class,
-//        'TYPE_CHAT_CLOSED'              => ChatClosedMessage::class
-    ];
-
-
     /**
      * @throws MessageFactoryException
      */
     public static function create(Request $request): Data
     {
         $data = self::fromRequest($request);
-        return new self::$map[$data['message_type']](...$data);
+        $class_name = self::$map[$data['message_type']];
+        return $class_name::validateAndCreate($data);
     }
+
+
+    /**
+     * https://docs.ozon.ru/api/seller/#tag/push_types
+     */
+    protected static array $map = [
+        'TYPE_PING'                     => PingMessage::class,
+        'TYPE_NEW_POSTING'              => NewPostingMessage::class,
+        'TYPE_POSTING_CANCELLED'        => PostingCancelledMessage::class,
+        'TYPE_STATE_CHANGED'            => StateChangedMessage::class,
+        'TYPE_CUTOFF_DATE_CHANGED'      => CutoffDateChangedMessage::class,
+        'TYPE_DELIVERY_DATE_CHANGED'    => DeliveryDateChangedMessage::class,
+        'TYPE_CREATE_ITEM'              => CreateItemMessage::class,
+        'TYPE_UPDATE_ITEM'              => UpdateItemMessage::class,
+        'TYPE_PRICE_INDEX_CHANGED'      => PriceIndexChangedMessage::class,
+        'TYPE_STOCKS_CHANGED'           => StocksChangedMessage::class,
+        'TYPE_NEW_MESSAGE'              => NewMessageMessage::class,
+        'TYPE_UPDATE_MESSAGE'           => UpdateMessageMessage::class,
+        'TYPE_MESSAGE_READ'             => MessageReadMessage::class,
+        'TYPE_CHAT_CLOSED'              => ChatClosedMessage::class
+    ];
 
 
     /**

@@ -5,9 +5,9 @@ namespace Muscobytes\OzonSeller\Events;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Muscobytes\OzonSeller\Messages\PingMessage;
+use Muscobytes\OzonSeller\Messages\NewMessageMessage;
 
-class PingEvent
+class NewMessageEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -15,9 +15,10 @@ class PingEvent
      * Create a new event instance.
      */
     public function __construct(
-        PingMessage $message
+        NewMessageMessage $message
     )
     {
         //
     }
+
 }

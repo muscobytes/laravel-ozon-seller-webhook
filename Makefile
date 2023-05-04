@@ -1,7 +1,10 @@
 #!make
 
-TAG=muscobytes/php-8.1-cli
-DOCKER=docker run -ti --volume "$(shell pwd):/var/www/html" $(TAG)
+TAG=muscobytes/ozon-seller-webhook-php-8.1-cli
+DOCKER=docker run -ti \
+	--volume "$(shell pwd):/var/www/html" \
+	-e PHP_IDE_CONFIG="serverName=ozon-seller-webhook" \
+	$(TAG)
 
 .PHONY: help build shell test install update
 help:      ## Shows this help message
