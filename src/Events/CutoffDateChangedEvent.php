@@ -15,7 +15,7 @@ class CutoffDateChangedEvent
      * Create a new event instance.
      */
     public function __construct(
-        CutoffDateChangedMessage $message
+        public CutoffDateChangedMessage $message
     )
     {
         //

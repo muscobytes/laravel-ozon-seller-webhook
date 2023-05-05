@@ -15,7 +15,7 @@ class UpdateItemEvent
      * Create a new event instance.
      */
     public function __construct(
-        UpdateItemMessage $message
+        public UpdateItemMessage $message
     )
     {
         //

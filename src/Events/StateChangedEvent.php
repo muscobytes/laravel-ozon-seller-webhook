@@ -15,7 +15,7 @@ class StateChangedEvent
      * Create a new event instance.
      */
     public function __construct(
-        StateChangedMessage $message
+        public StateChangedMessage $message
     )
     {
         //

@@ -35,7 +35,11 @@ class EventDispatchedTest extends TestCase
             $payload
         );
         $response->assertStatus(200);
-        Event::assertDispatched($event);
+        Event::assertDispatched($event, function ($e) use ($payload) {
+            $this->assertObjectHasProperty('message', $e);
+            $this->assertEquals($payload['message_type'], $e->message->message_type);
+            return true;
+        });
     }
 
 

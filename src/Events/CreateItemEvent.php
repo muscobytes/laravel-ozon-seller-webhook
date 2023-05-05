@@ -15,7 +15,7 @@ class CreateItemEvent
      * Create a new event instance.
      */
     public function __construct(
-        CreateItemMessage $message
+        public CreateItemMessage $message
     )
     {
         //

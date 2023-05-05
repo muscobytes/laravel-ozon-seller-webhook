@@ -7,7 +7,7 @@ This package allows you to:
 ## Installation
 
 ```shell
-composer require muscobytes/laravel-ozon-seller-webhook
+composer require muscobytes/laravel-ozon-seller-webhook:^1
 ```
 
 ## Configuration

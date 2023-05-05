@@ -15,7 +15,7 @@ class StocksChangedEvent
      * Create a new event instance.
      */
     public function __construct(
-        StocksChangedMessage $message
+        public StocksChangedMessage $message
     )
     {
         //

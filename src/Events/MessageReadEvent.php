@@ -15,7 +15,7 @@ class MessageReadEvent
      * Create a new event instance.
      */
     public function __construct(
-        MessageReadMessage $message
+        public MessageReadMessage $message
     )
     {
         //

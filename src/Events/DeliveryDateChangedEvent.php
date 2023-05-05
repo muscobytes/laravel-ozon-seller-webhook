@@ -14,7 +14,9 @@ class DeliveryDateChangedEvent
     /**
      * Create a new event instance.
      */
-    public function __construct(DeliveryDateChangedMessage $message)
+    public function __construct(
+        public DeliveryDateChangedMessage $message
+    )
     {
         //
     }

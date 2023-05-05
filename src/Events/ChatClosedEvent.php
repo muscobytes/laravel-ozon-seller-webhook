@@ -15,7 +15,7 @@ class ChatClosedEvent
      * Create a new event instance.
      */
     public function __construct(
-        ChatClosedMessage $message
+        public ChatClosedMessage $message
     )
     {
         //

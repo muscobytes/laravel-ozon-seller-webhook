@@ -15,7 +15,7 @@ class UpdateMessageEvent
      * Create a new event instance.
      */
     public function __construct(
-        UpdateMessageMessage $message
+        public UpdateMessageMessage $message
     )
     {
         //
