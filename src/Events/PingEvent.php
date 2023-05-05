@@ -15,7 +15,7 @@ class PingEvent
      * Create a new event instance.
      */
     public function __construct(
-        PingMessage $message
+        public PingMessage $message
     )
     {
         //

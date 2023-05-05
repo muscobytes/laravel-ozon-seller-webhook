@@ -15,7 +15,7 @@ class PostingCancelledEvent
      * Create a new event instance.
      */
     public function __construct(
-        PostingCancelledMessage $message
+        public PostingCancelledMessage $message
     )
     {
         //

@@ -18,5 +18,5 @@ use Muscobytes\OzonSeller\Middleware\WebhookMiddleware;
 
 
 Route::middleware(WebhookMiddleware::class)->post(
-    config('ozonseller.webhook.url'), [WebhookController::class, 'webhook']
+    config('ozonseller.webhook.url'), [ WebhookController::class, 'webhook' ]
 )->name('ozonseller.webhook');

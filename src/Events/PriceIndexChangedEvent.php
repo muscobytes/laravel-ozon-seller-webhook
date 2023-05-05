@@ -15,7 +15,7 @@ class PriceIndexChangedEvent
      * Create a new event instance.
      */
     public function __construct(
-        PriceIndexChangedMessage $message
+        public PriceIndexChangedMessage $message
     )
     {
         //
