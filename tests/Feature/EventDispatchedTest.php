@@ -23,7 +23,7 @@ class EventDispatchedTest extends TestCase
 {
     /**
      * @test
-     * @dataProvider test_is_event_dispatched_data_provider
+     * @dataProvider event_dispatched_data_provider
      */
     public function test_is_event_dispatched(string $client_id, $event, array $payload): void
     {
@@ -43,16 +43,8 @@ class EventDispatchedTest extends TestCase
     }
 
 
-    public static function test_is_event_dispatched_data_provider(): array
+    public static function event_dispatched_data_provider(): array
     {
-        /**
-         * Workaround on
-         * Muscobytes\OzonSeller\Tests\Feature\EventDispatchedTest::test_is_event_dispatched with data set #2
-         * This test did not perform any assertions
-         * @TODO try to figure out why PHPUnit expects that dataProvider method should perform any assertion
-         */
-        self::assertTrue(true);
-
         $client_id = '314159265359';
 
         return [
